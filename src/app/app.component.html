@@ -1,0 +1,40 @@
+<div class="container">
+  <h1 class="mt-5">Task Management</h1>
+
+  <form class="task-form mt-4">
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title" [(ngModel)]="title" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" [(ngModel)]="description" class="form-control" required></textarea>
+    </div>
+
+    <div class="button-group">
+      <button type="button" class="btn btn-primary" (click)="addTask()">Add Task</button>
+      <button type="button" class="btn btn-secondary" (click)="fetchTasks()">Get Tasks</button>
+    </div>
+  </form>
+
+  <hr class="my-4">
+
+  <ul class="list-group">
+    <li *ngFor="let task of tasks" class="list-group-item">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <span class="badge badge-primary mr-2">ID: {{ task.id }}</span>
+          <span class="task-title">{{ task.title }}</span> -
+          <span class="task-description">{{ task.description }}</span>
+        </div>
+        
+        <div>
+          <span class="badge badge-info mr-2">Status: {{ task.status }}</span>
+          <button class="btn btn-warning mr-2" (click)="updateTask(task.id)">Update</button>
+          <button class="btn btn-danger" (click)="deleteTask(task.id)">Delete</button>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

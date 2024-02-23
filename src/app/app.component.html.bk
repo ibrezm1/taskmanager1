@@ -1,0 +1,26 @@
+<div>
+  <h1>Task Management</h1>
+
+  <!-- Form to add a new task -->
+  <div>
+    <label for="title">Title:</label>
+    <input type="text" id="title" [(ngModel)]="title" required>
+    <br>
+    <label for="description">Description:</label>
+    <textarea id="description" [(ngModel)]="description" required></textarea>
+    <br>
+    <button (click)="addTask()">Add Task</button>
+    <button (click)="fetchTasks()">Get Tasks</button>
+  </div>
+
+  <hr>
+
+  <!-- Task list -->
+  <ul>
+    <li *ngFor="let task of tasks">
+      {{ task.id }}: {{ task.title }} - {{ task.description }}
+      <button (click)="updateTask(task.id)">Update</button>
+      <button (click)="deleteTask(task.id)">Delete</button>
+    </li>
+  </ul>
+</div>
